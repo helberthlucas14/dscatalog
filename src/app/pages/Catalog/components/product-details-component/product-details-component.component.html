@@ -1,0 +1,53 @@
+<div class="product-details-container">
+  <div class="card-base border-radius-20 product-details">
+    <!-- Link para Voltar -->
+    <a routerLink="/products" class="product-details-goback">
+      <img src="/images/arrow-blue.svg" alt="Arrow Blue" class="icon-goback" />
+      <h1 class="text-goback">Voltar</h1>
+    </a>
+
+    <!-- Detalhes do Produto -->
+    <div class="row">
+      <div class="col-6 pr-5">
+        <!-- Loader antes do conteúdo carregar -->
+        <ng-container *ngIf="(product$ | async) === null; else productContent">
+          <app-product-info-loader-component></app-product-info-loader-component>
+        </ng-container>
+
+        <ng-template #productContent>
+          <div *ngIf="product$ | async as product">
+            <!-- Imagem do Produto -->
+            <div class="product-details-card text-center">
+              <img
+                [src]="product.imgUrl"
+                [alt]="product.name"
+                class="product-details-image"
+              />
+            </div>
+            <!-- Nome do Produto -->
+            <h1 class="product--details-name">{{ product.name }}</h1>
+
+            <!-- Preço do Produto -->
+            <app-product-price-component
+              [price]="product.price"
+            ></app-product-price-component>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="col-6 product-details-card">
+        <!-- Loader antes do conteúdo carregar -->
+        <ng-container *ngIf="(product$ | async) === null; else descriptionContent">
+          <app-product-description-loader-component></app-product-description-loader-component>
+        </ng-container>
+
+        <ng-template #descriptionContent>
+          <div *ngIf="product$ | async as product">
+            <h1 class="product-description-title">Descrição do Produto</h1>
+            <p class="product-description-text">{{ product.description }}</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

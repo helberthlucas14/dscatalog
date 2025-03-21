@@ -1,0 +1,19 @@
+<div class="admin-base-form card-base">
+  <h1 class="base-form-title">
+    {{ title }}
+  </h1>
+
+  <!-- Conteúdo dinâmico (ng-content) -->
+  <ng-content></ng-content>
+
+  <div class="base-form-actions">
+    <button
+      class="btn btn-outline-danger border-radius-10 mr-3"
+      (click)="handleCancel()"
+    >
+      CANCELAR
+    </button>
+
+    <button class="btn btn-primary border-radius-10">SALVAR</button>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="card-base border-radius-10 product-card">
+  <img [src]="product.imgUrl" [alt]="product.name" class="product-card-image" />
+  <div class="product-info">
+    <h6 class="product-name">{{ product.name }}</h6>
+    <app-product-price-component [price]="product.price"></app-product-price-component>
+  </div>
+</div>

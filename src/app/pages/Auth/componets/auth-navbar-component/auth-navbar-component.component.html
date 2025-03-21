@@ -1,0 +1,19 @@
+<nav class="admin-nav-container">
+  <ul>
+    <li>
+      <a routerLink="/admin/products" routerLinkActive="active" class="admin-nav-item">
+        Meus Produtos
+      </a>
+    </li>
+    <li>
+      <a routerLink="/admin/categories" routerLinkActive="active" class="admin-nav-item">
+        Minhas Categorias
+      </a>
+    </li>
+    <li *ngIf="isAdmin()">
+      <a routerLink="/admin/users" routerLinkActive="active" class="admin-nav-item">
+        Meus Usuários
+      </a>
+    </li>
+  </ul>
+</nav>

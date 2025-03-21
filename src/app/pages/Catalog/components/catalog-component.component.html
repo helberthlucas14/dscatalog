@@ -1,0 +1,27 @@
+<div class="catalog-container">
+  <h1 class="catalog-title">Catálogo de produtos</h1>
+
+  <section class="catalog-products">
+    <!-- Exibe o loader enquanto carrega -->
+    <app-product-card-loader-component
+      *ngIf="isLoading"
+    ></app-product-card-loader-component>
+
+    <!-- Exibe os produtos após o carregamento -->
+    <ng-content *ngIf="!isLoading && productResponse?.content?.length">
+      <div *ngFor="let product of productResponse?.content">
+        <a [routerLink]="['/products', product.id]" class="product-link">
+          <catalog-card-component [product]="product"></catalog-card-component>
+        </a>
+      </div>
+    </ng-content>
+  </section>
+
+  <!-- Exibe a paginação -->
+  <app-pagination-component
+    *ngIf="productResponse"
+    [totalPages]="productResponse.totalPages"
+    [activePage]="activePage"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination-component>
+</div>

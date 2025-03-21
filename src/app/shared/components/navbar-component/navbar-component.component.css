@@ -1,6 +1,9 @@
+/* Arquivo: styles.css (ou styles.scss) */
+
 .main-nav {
   height: 70px;
   color: #fff;
+  display: flex;
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
@@ -9,6 +12,7 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-logo-text {
@@ -18,24 +22,24 @@ a {
 .main-menu {
   display: flex;
   justify-content: center;
+}
 
-  li:nth-child(2) {
-    margin-left: 85px;
-    margin-right: 85px;
-  }
+.main-menu li:nth-child(2) {
+  margin-left: 85px;
+  margin-right: 85px;
 }
 
 .nav-link {
   font-size: 18px;
   font-style: normal;
   color: rgba(255, 255, 255, 0.5);
+}
 
-  &.active {
-    font-weight: bold;
-    color: #fff;
-  }
+.nav-link.active {
+  font-weight: bold;
+  color: #fff;
+}
 
-  &:hover {
-    color: #fff;
-  }
+.nav-link:hover {
+  color: #fff;
 }

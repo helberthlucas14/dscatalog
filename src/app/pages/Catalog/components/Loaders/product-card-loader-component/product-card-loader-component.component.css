@@ -1,0 +1,23 @@
+.product-card-loader {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .content-loader {
+    display: block;
+    border-radius: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% {
+      background-color: #ecebeb;
+    }
+    50% {
+      background-color: #d6d2d2;
+    }
+    100% {
+      background-color: #ecebeb;
+    }
+  }
+  

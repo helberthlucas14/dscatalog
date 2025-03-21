@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../core/services/AuthService.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar-component',
@@ -9,14 +11,29 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './navbar-component.component.html',
   styleUrls: ['./navbar-component.component.css'],
 })
-export class NavbarComponentComponent implements OnInit {
-  constructor() {}
+export class NavbarComponentComponent implements OnInit, OnDestroy {
+  currentUser: string | null = null;
+  private userSubscription!: Subscription;
 
-  ngOnInit() {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    // Assina o estado reativo do usuário para atualizações automáticas
+    this.userSubscription = this.authService.user$.subscribe(() => {
+      const tokenData = this.authService.getAccessTokenDecoded();
+      this.currentUser = tokenData?.user_name ?? null;
+    });
+  }
 
   handleLogout(event: Event): void {
     event.preventDefault();
-    // this.authService.logout();
-    // this.router.navigate(['/auth/login']);
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
+  }
+
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }

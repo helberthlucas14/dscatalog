@@ -1,0 +1,37 @@
+<div class="pagination-container">
+  <!-- Ícone de Página Anterior -->
+  <img
+    *ngIf="activePage > 0"
+    (click)="onPageChange(activePage - 1)"
+    class="pagination-previous page-active"
+    [attr.data-testid]="'arrow-icon-previous'"
+    src="/images/arrow-blue.svg"
+    alt="Arrow Left"
+    width="16"
+    height="16"
+  />
+
+  <!-- Itens de Paginação -->
+  <div
+    *ngFor="let item of generateList(totalPages)"
+    [ngClass]="{
+      'pagination-item': true,
+      'active': item === activePage
+    }"
+    (click)="onPageChange(item)"
+  >
+    {{ item + 1 }}
+  </div>
+
+  <!-- Ícone de Página Seguinte -->
+  <img
+    *ngIf="activePage + 1 < totalPages"
+    (click)="onPageChange(activePage + 1)"
+    class="pagination-next page-active"
+    [attr.data-testid]="'arrow-icon-next'"
+    src="/images/arrow-blue.svg"
+    alt="Arrow Right"
+    width="16"
+    height="16"
+  />
+</div>

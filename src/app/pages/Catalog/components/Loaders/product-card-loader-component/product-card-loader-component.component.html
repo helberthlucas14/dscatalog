@@ -1,0 +1,19 @@
+<ng-container *ngFor="let item of loaderItems">
+  <content-loader
+    [speed]="0.5"
+    width="250"
+    height="335"
+    [viewBox]="'0 0 250 335'"
+    [backgroundColor]="'#ecebeb'"
+    [foregroundColor]="'#d6d2d2'"
+  >
+    <svg:rect
+      x="-3"
+      y="-10"
+      rx="10"
+      ry="10"
+      width="250"
+      height="335"
+    ></svg:rect>
+  </content-loader>
+</ng-container>
