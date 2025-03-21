@@ -1,0 +1,22 @@
+<div class="home-container">
+  <div class="row home-content card-base border-radius-20">
+    <div class="col-6">
+      <h1 class="text-title">Conheça o melhor <br />catálogo de produtos</h1>
+      <p class="text-subtitle">
+        Ajudaremos você a encontrar os melhores <br />
+        produtos disponíveis no mercado.
+      </p>
+      <a [routerLink]="['/products']">
+        <app-button-icon [text]="'inicie agora sua busca'"></app-button-icon>
+      </a>
+    </div>
+    <div class="col-6">
+      <img
+        src="/images/main-image.svg"
+        class="main-image"
+        data-testid="main-image"
+        alt="Main Image"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<nav class="row bg-primary main-nav">
+  <div class="col-3">
+    <a routerLink="/" class="nav-logo-text">
+      <h4>DS Catalog</h4>
+    </a>
+  </div>
+
+  <div class="col-6">
+    <ul class="main-menu">
+      <li>
+        <a routerLink="/" routerLinkActive="active" class="nav-link">HOME</a>
+      </li>
+      <li>
+        <a routerLink="/products" routerLinkActive="active" class="nav-link">CATÁLOGO</a>
+      </li>
+      <li>
+        <a routerLink="/admin" routerLinkActive="active" class="nav-link">ADMIN</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-3 text-right">
+    <!-- <ng-container *ngIf="currentUser; else loggedOut">
+      <span>{{ currentUser }}</span>
+      <a href="#" class="nav-link active d-inline" (click)="handleLogout($event)">
+        LOGOUT
+      </a>
+    </ng-container> -->
+    <ng-template #loggedOut>
+      <a routerLink="/auth/login" class="nav-link active">LOGIN</a>
+    </ng-template>
+  </div>
+</nav>
